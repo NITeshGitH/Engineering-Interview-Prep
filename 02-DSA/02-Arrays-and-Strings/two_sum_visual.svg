@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 700; fill: #ffffff; }
+      .text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #cdd6f4; font-size: 13px; }
+      .text-bold { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 600; fill: #ffffff; font-size: 13px; }
+      .subtext { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #a6adc8; font-size: 11px; }
+      .code { font-family: "Fira Code", monospace, Consolas, Courier; font-size: 12px; fill: #f9e2af; }
+      .card { fill: #1e1e2e; stroke: #313244; stroke-width: 1.5; rx: 10; }
+      .badge-red { fill: #f38ba8; }
+      .badge-green { fill: #a6e3a1; }
+      .badge-blue { fill: #89b4fa; }
+      .arrow { stroke-width: 2; marker-end: url(#arrowhead); fill: none; }
+    </style>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#f38ba8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#a6e3a1"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#89b4fa"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="520" fill="#11111b" rx="12"/>
+
+  <!-- Header -->
+  <text x="30" y="38" class="title" font-size="20">Two Sum: Mechanical Comparison (Target = 9)</text>
+  <text x="30" y="60" class="subtext" font-size="13">Input Array: [ 2 (idx 0), 11 (idx 1), 7 (idx 2), 15 (idx 3) ]</text>
+
+  <!-- LEFT CARD: BRUTE FORCE -->
+  <g transform="translate(30, 80)">
+    <rect width="405" height="400" class="card"/>
+    <rect x="0" y="0" width="405" height="42" fill="#261b24" rx="10" style="clip-path: inset(0 0 358 0);"/>
+    <circle cx="25" cy="22" r="8" fill="#f38ba8"/>
+    <text x="42" y="27" class="text-bold" fill="#f38ba8" font-size="14">Approach 1: User's Brute Force</text>
+    <rect x="300" y="10" width="90" height="24" rx="6" fill="#452733"/>
+    <text x="312" y="26" class="text-bold" fill="#f38ba8" font-size="12">Time: O(N²)</text>
+
+    <!-- Content -->
+    <text x="20" y="70" class="text-bold">Pairwise Iteration Grid (N(N-1)/2 checks):</text>
+
+    <!-- Iteration 1 -->
+    <rect x="20" y="85" width="365" height="55" rx="6" fill="#181825" stroke="#313244"/>
+    <text x="30" y="105" class="code" fill="#89b4fa">i = 0 (val: 2)</text>
+    <text x="135" y="105" class="text">j=1 [11] -> 2+11 = 13 ≠ 9</text>
+    <text x="135" y="125" class="text" fill="#a6e3a1">j=2 [7]  -> 2+7 = 9 (Match found!)</text>
+
+    <!-- Problem note -->
+    <rect x="20" y="150" width="365" height="65" rx="6" fill="#2a1e24" stroke="#f38ba8" stroke-dasharray="4"/>
+    <text x="30" y="172" class="text-bold" fill="#f38ba8">Problem in User Implementation:</text>
+    <text x="30" y="192" class="text" fill="#f5c2e7">No early return! Loop continues checking:</text>
+    <text x="30" y="206" class="subtext" fill="#eba0ac">- j=3 [15] -> 2+15 = 17</text>
+
+    <!-- Subsequent iterations -->
+    <rect x="20" y="225" width="365" height="50" rx="6" fill="#181825" stroke="#313244"/>
+    <text x="30" y="245" class="code" fill="#fab387">i = 1 (val: 11)</text>
+    <text x="135" y="245" class="text">j=2 [7] -> 18,  j=3 [15] -> 26</text>
+    <text x="135" y="262" class="subtext">Redundant checks after match!</text>
+
+    <rect x="20" y="285" width="365" height="40" rx="6" fill="#181825" stroke="#313244"/>
+    <text x="30" y="308" class="code" fill="#fab387">i = 2 (val: 7)</text>
+    <text x="135" y="308" class="text">j=3 [15] -> 22</text>
+
+    <!-- Stats -->
+    <rect x="20" y="338" width="365" height="48" rx="6" fill="#311f28"/>
+    <text x="30" y="358" class="text-bold" fill="#f38ba8">Worst-Case Operations (N = 10⁴):</text>
+    <text x="30" y="375" class="text-bold" font-size="14" fill="#ffffff">~50,000,000 inner loop checks</text>
+  </g>
+
+  <!-- RIGHT CARD: HASH MAP -->
+  <g transform="translate(465, 80)">
+    <rect width="405" height="400" class="card"/>
+    <rect x="0" y="0" width="405" height="42" fill="#192a24" rx="10" style="clip-path: inset(0 0 358 0);"/>
+    <circle cx="25" cy="22" r="8" fill="#a6e3a1"/>
+    <text x="42" y="27" class="text-bold" fill="#a6e3a1" font-size="14">Approach 2: Optimal Hash Map</text>
+    <rect x="300" y="10" width="90" height="24" rx="6" fill="#1e3a2f"/>
+    <text x="316" y="26" class="text-bold" fill="#a6e3a1" font-size="12">Time: O(N)</text>
+
+    <!-- Content -->
+    <text x="20" y="70" class="text-bold">Single-Pass Complement Lookup (Target = 9):</text>
+
+    <!-- Step 1 -->
+    <g transform="translate(20, 85)">
+      <rect width="365" height="60" rx="6" fill="#181825" stroke="#313244"/>
+      <text x="15" y="22" class="text-bold" fill="#89b4fa">Step 1: num = 2 (idx: 0)</text>
+      <text x="15" y="42" class="text">Complement = 9 - 2 = <tspan fill="#f9e2af" font-weight="600">7</tspan></text>
+      <text x="215" y="22" class="subtext">Map check: Has 7? ❌ No</text>
+      <text x="215" y="42" class="subtext" fill="#89b4fa">Action: Store { 2: 0 }</text>
+    </g>
+
+    <!-- Step 2 -->
+    <g transform="translate(20, 155)">
+      <rect width="365" height="60" rx="6" fill="#181825" stroke="#313244"/>
+      <text x="15" y="22" class="text-bold" fill="#89b4fa">Step 2: num = 11 (idx: 1)</text>
+      <text x="15" y="42" class="text">Complement = 9 - 11 = <tspan fill="#f9e2af" font-weight="600">-2</tspan></text>
+      <text x="215" y="22" class="subtext">Map check: Has -2? ❌ No</text>
+      <text x="215" y="42" class="subtext" fill="#89b4fa">Action: Store { 11: 1 }</text>
+    </g>
+
+    <!-- Step 3 -->
+    <g transform="translate(20, 225)">
+      <rect width="365" height="95" rx="6" fill="#1c2f26" stroke="#a6e3a1" stroke-width="2"/>
+      <text x="15" y="25" class="text-bold" fill="#a6e3a1" font-size="14">Step 3: num = 7 (idx: 2)</text>
+      <text x="15" y="48" class="text">Complement = 9 - 7 = <tspan fill="#a6e3a1" font-weight="700">2</tspan></text>
+      <text x="15" y="70" class="text-bold" fill="#a6e3a1">Map check: Has 2? ✅ YES! (Index 0)</text>
+      <rect x="235" y="22" width="115" height="48" rx="6" fill="#2d523e"/>
+      <text x="245" y="42" class="text-bold" fill="#ffffff">Instant Return:</text>
+      <text x="245" y="58" class="code" fill="#a6e3a1">[ 0, 2 ]</text>
+    </g>
+
+    <!-- Stats -->
+    <rect x="20" y="338" width="365" height="48" rx="6" fill="#1a3528"/>
+    <text x="30" y="358" class="text-bold" fill="#a6e3a1">Worst-Case Operations (N = 10⁴):</text>
+    <text x="30" y="375" class="text-bold" font-size="14" fill="#ffffff">≤ 10,000 lookups (5000x faster)</text>
+  </g>
+</svg>

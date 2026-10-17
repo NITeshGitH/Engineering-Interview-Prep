@@ -1,0 +1,28 @@
+<mxfile host="app.diagrams.net" modified="2026-10-18T00:50:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="TwoSumComparison" name="Two Sum Comparison">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#1e1e2e" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <!-- Title -->
+        <mxCell id="2" value="Two Sum (LeetCode #1): Brute Force vs Optimal One-Pass Hash Map" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="100" y="20" width="800" height="40" as="geometry" />
+        </mxCell>
+        <!-- Box 1: Brute Force -->
+        <mxCell id="3" value="Approach 1: User Submission (Brute Force - O(N²))" style="swimlane;whiteSpace=wrap;html=1;fillColor=#2a1e24;strokeColor=#f38ba8;fontColor=#f38ba8;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="420" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Array: [ 2 (0),  11 (1),  7 (2),  15 (3) ] | Target: 9&#xa;&#xa;i = 0 [2]:&#xa;  j = 1 [11] -&gt; 2 + 11 = 13 (≠ 9)&#xa;  j = 2 [7]  -&gt; 2 + 7  = 9  (MATCH!)&#xa;  j = 3 [15] -&gt; 2 + 15 = 17 (Redundant check!)&#xa;&#xa;i = 1 [11]:&#xa;  j = 2 [7]  -&gt; 11 + 7  = 18&#xa;  j = 3 [15] -&gt; 11 + 15 = 26&#xa;&#xa;i = 2 [7]:&#xa;  j = 3 [15] -&gt; 7 + 15 = 22&#xa;&#xa;⚠️ Crucial Issue:&#xa;- No early exit / return upon finding match.&#xa;- Total operations = N(N-1)/2 ≈ 50,000,000 checks at N=10⁴." style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fillColor=#181825;strokeColor=#313244;fontColor=#cdd6f4;fontSize=12;spacing=10;" vertex="1" parent="3">
+          <mxGeometry x="20" y="45" width="380" height="350" as="geometry" />
+        </mxCell>
+        <!-- Box 2: Optimal Hash Map -->
+        <mxCell id="5" value="Approach 2: Optimal Solution (One-Pass Hash Map - O(N))" style="swimlane;whiteSpace=wrap;html=1;fillColor=#192a24;strokeColor=#a6e3a1;fontColor=#a6e3a1;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="520" y="80" width="440" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Target = 9 | Map Stores: (Value -&gt; Index)&#xa;&#xa;Step 1: i = 0, val = 2&#xa;  - Complement needed: 9 - 2 = 7&#xa;  - Is 7 in Map? NO&#xa;  - Action: Put {2: 0}&#xa;&#xa;Step 2: i = 1, val = 11&#xa;  - Complement needed: 9 - 11 = -2&#xa;  - Is -2 in Map? NO&#xa;  - Action: Put {11: 1}&#xa;&#xa;Step 3: i = 2, val = 7&#xa;  - Complement needed: 9 - 7 = 2&#xa;  - Is 2 in Map? YES! (At index 0)&#xa;  - Action: IMMEDIATELY return [0, 2]!&#xa;&#xa;🚀 Efficiency:&#xa;- Terminated at step 3.&#xa;- Never checked 15.&#xa;- Average O(1) hash bucket lookup." style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fillColor=#181825;strokeColor=#313244;fontColor=#cdd6f4;fontSize=12;spacing=10;" vertex="1" parent="5">
+          <mxGeometry x="20" y="45" width="400" height="350" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
