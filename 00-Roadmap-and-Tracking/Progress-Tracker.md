@@ -29,8 +29,8 @@
 | Topic | Notes | Practice | Self-Test | Status | Last Reviewed |
 |---|:---:|:---:|:---:|:---:|:---:|
 | Complexity & Big-O Analysis | ⚪ | ⚪ | ⚪ | ⚪ Not Started | - |
-| Arrays & Strings | ⚪ | ⚪ | ⚪ | ⚪ Not Started | - |
-| Hashing & Hash Tables | ⚪ | ⚪ | ⚪ | ⚪ Not Started | - |
+| Arrays & Strings | 🟡 Notes Added | 🔵 1 Solved | ⚪ | 🟡 In Progress | 2026-10-18 |
+| Hashing & Hash Tables | 🟡 Notes Added | 🔵 1 Solved | ⚪ | 🟡 In Progress | 2026-10-18 |
 | Two Pointers & Sliding Window | ⚪ | ⚪ | ⚪ | ⚪ Not Started | - |
 | Linked Lists | ⚪ | ⚪ | ⚪ | ⚪ Not Started | - |
 | Stacks & Queues | ⚪ | ⚪ | ⚪ | ⚪ Not Started | - |
